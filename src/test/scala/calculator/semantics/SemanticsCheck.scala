@@ -48,6 +48,10 @@ object CalcInterpreterSpec extends Properties("Interpreter") with CalcSugar {
     } 
     
     property("division") = forAll { (n1: Int, n2: Int) ⇒
-      (n1 |/| n2) ~> (n1 / n2)   
+      val expr = n1 |/| n2
+      if (n2 == 0)
+        expr ~/~> classOf[ArithmeticException]
+      else
+        expr ~> (n1 / n2)
     }
 }
