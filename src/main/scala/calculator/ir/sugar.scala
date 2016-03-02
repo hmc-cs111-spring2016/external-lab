@@ -3,8 +3,7 @@ package calculator.ir
 import scala.language.implicitConversions
 
 // internal DSL for creating ASTs
-object sugar {
-
+trait CalcSugar {
   // to use a number on its own
   implicit def int2Number(i: Int): Num = Num(i)
   

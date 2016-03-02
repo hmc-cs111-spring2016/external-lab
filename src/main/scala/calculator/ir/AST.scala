@@ -13,8 +13,7 @@ package calculator.ir
  *  
  */
 
-sealed abstract class AST
-sealed abstract class Expr extends AST
+sealed abstract class Expr
 
 case class Num(n: Int) extends Expr
 case class Plus(left: Expr, right: Expr) extends Expr

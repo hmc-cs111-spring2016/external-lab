@@ -1,13 +1,11 @@
-package language.parser
+package calculator.parser
 
 import scala.language.implicitConversions
 import org.scalacheck.Prop.forAll
 import org.scalacheck.Properties
-import calculator.parser.CalcParser
 import calculator.ir._
-import calculator.ir.sugar._
 
-object CalcParseSpec extends Properties("Parser") {
+object CalcParseSpec extends Properties("Parser") with CalcSugar {
 
     // some syntactic sugar for expressing parser tests
     implicit class ParseResultChecker(input: String) {

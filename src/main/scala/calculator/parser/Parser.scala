@@ -2,12 +2,11 @@ package calculator.parser
 
 import scala.util.parsing.combinator._
 import calculator.ir._
-import calculator.ir.sugar._
 
-object CalcParser extends JavaTokenParsers with PackratParsers {
+object CalcParser extends JavaTokenParsers with PackratParsers with CalcSugar {
 
     // parsing interface
-    def apply(s: String): ParseResult[AST] = parseAll(expr, s)
+    def apply(s: String): ParseResult[Expr] = parseAll(expr, s)
 
     // expressions
     lazy val expr: PackratParser[Expr] = 

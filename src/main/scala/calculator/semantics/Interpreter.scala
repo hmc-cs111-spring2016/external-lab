@@ -3,7 +3,7 @@ package calculator
 import calculator.ir._
 
 package object semantics {
-  def eval(ast: AST): Int = ast match {
+  def eval(expr: Expr): Int = expr match {
     case Num(i) ⇒ i
     case Plus(left, right) ⇒ eval(left) + eval(right)
   }
