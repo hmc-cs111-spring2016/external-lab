@@ -43,4 +43,11 @@ object CalcInterpreterSpec extends Properties("Interpreter") with CalcSugar {
       (n1 |-| n2) ~> (n1 - n2)   
     } 
     
+    property("multiplication") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |*| n2) ~> (n1 * n2)   
+    } 
+    
+    property("division") = forAll { (n1: Int, n2: Int) ⇒
+      (n1 |/| n2) ~> (n1 / n2)   
+    }
 }
