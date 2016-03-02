@@ -21,16 +21,6 @@ object CalcInterpreterSpec extends Properties("Interpreter") with CalcSugar {
       }
     }
     
-    // Generators for ASTs
-    val genNum = for {
-      n ← arbitrary[Int]
-    } yield Num(n)
-    
-    val genAddition = for {
-      n1 ← genNum
-      n2 ← genNum
-    } yield n1 |+| n2
-    
     property("numbers") = forAll { (n: Int) ⇒
       Num(n) ~> n
     } 
