@@ -3,14 +3,14 @@ package calculator.parser
 import scala.util.parsing.combinator._
 import calculator.ir._
 
-object CalcParser extends JavaTokenParsers with PackratParsers with CalcSugar {
+object CalcParser extends JavaTokenParsers with PackratParsers {
 
     // parsing interface
     def apply(s: String): ParseResult[Expr] = parseAll(expr, s)
 
     // expressions
     lazy val expr: PackratParser[Expr] = 
-      (   expr~"+"~fact ^^ {case l~"+"~r ⇒ l |+| r}
+      (   expr~"+"~fact ^^ {case l~"+"~r ⇒ Plus(l, r)}
         | fact )
         
     // factors
