@@ -3,6 +3,19 @@ package calculator.parser
 import scala.util.parsing.combinator._
 import calculator.ir._
 
+/**
+ * -----------
+ * Grammar
+ * -----------
+ * 
+ *                   n ∈ 𝒵 
+ * 
+ *       e ∈ Expr ::= e + t | e - t | t
+ *       t ∈ Term ::= t * f | t / f | f
+ *       f ∈ Fact ::= n | ( e )
+ *  
+ */
+
 object CalcParser extends JavaTokenParsers with PackratParsers {
 
     // parsing interface
