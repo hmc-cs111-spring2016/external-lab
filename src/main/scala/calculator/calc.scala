@@ -9,7 +9,11 @@ object Calculator extends EvalLoop with App {
 
   loop { line ⇒
     CalcParser(line) match {
-      case CalcParser.Success(t, _) ⇒ println(eval(t))
+      case CalcParser.Success(t, _) ⇒ try {
+        println(eval(t))
+      } catch {  // check for divide by zero
+        case e:ArithmeticException ⇒ println(e.getMessage())
+      }
       case e: CalcParser.NoSuccess  ⇒ println(e)
     }
   }
